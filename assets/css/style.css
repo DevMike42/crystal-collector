@@ -1,0 +1,47 @@
+/* Body Styling */
+
+
+/* Flex Container */
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    margin: 30px auto;
+}
+
+/* Flex Items */
+
+.game-title {
+
+}
+
+.game-img #main-img {
+    height: 200px;
+}
+
+.game-counters {
+    display: flex;
+    flex-direction: row;
+}
+
+.wins {
+    display: flex;
+    flex-direction: row;
+}
+
+.losses {
+    display: flex;
+    flex-direction: row;
+}
+
+.game-values {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.crystal-btns {
+    display: flex;
+    flex-direction: row;
+}
