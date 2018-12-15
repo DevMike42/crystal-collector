@@ -3,6 +3,25 @@ body {
     background-image: url(../images/body-background.gif);
 }
 
+.main {
+    display: flex;
+    flex-direction: row;
+    color: deepskyblue;
+    font-family: fantasy;
+}
+
+.instructions {
+    margin: auto 10px;
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.instructions h1 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
 /* Flex Container */
 .flex-container {
     display: flex;
@@ -10,8 +29,6 @@ body {
     align-items: center;
     width: 60%;
     margin: 30px auto;
-    font-family: fantasy;
-    color: deepskyblue;
     border-radius: 20px;
     opacity: .9;
 }
