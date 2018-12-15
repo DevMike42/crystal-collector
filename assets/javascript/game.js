@@ -1,102 +1,123 @@
-// pseudo code
+$(document).ready(function(){
 
-// Game with 4 CRYSTALS
-// Each CRYSTAL should add a specific number to the TOTAL (when clicked)
-// Each CRYSTAL's number should be hidden from the user
-// When clicked, the TOTAL score should be updated
+    // Computer generates random number (user goal)
+    var computerNum = Math.floor(Math.random() * (120 - 19 + 1) + 19);
 
-// At the start of each round, computer generates a 
-// new RANDOM number between (19-120)
+    // Displays computer's random number
+    $('#goal').text(computerNum);
 
-// The player WINS if their total score matches the 
-// computer's number
-// The player LOSES if their total score goes over
-// the comuter's number
+    console.log('Intial comNum = ' + computerNum);
 
-// At the end of each ROUND, the game should reset
-// and the computer choses a NEW random number as
-// well as NEW hidden CRYSTAL values
+    // Generates initial random # for each crystal
+    var crystal1 = Math.floor(Math.random() * (12 - 1 + 1) +1);
+    var crystal2 = Math.floor(Math.random() * (12 - 1 + 1) +1);
+    var crystal3 = Math.floor(Math.random() * (12 - 1 + 1) +1);
+    var crystal4 = Math.floor(Math.random() * (12 - 1 + 1) +1);
 
-// The app should display the # of the player's WINS and 
-// LOSSES (DO NOT USE REFRESH AS A MEANS OF STARTING A 
-// NEW GAME)
+    // Console logs each initial crystal value
+    console.log('Intial crystal 1 = ' + crystal1);
+    console.log('Intial crystal 2 = ' + crystal2);
+    console.log('Intial crystal 3 = ' + crystal3);
+    console.log('Intial crystal 4 = ' + crystal4);
 
+    // Gameplay variables
+    var userTotal = 0;
+    var winCount = 0;
+    var lossCount = 0;
 
-// GLOBAL VARRIABLES
-// ====================================================================
+    $('#winCount').text(winCount);
+    $('#lossCount').text(lossCount);
 
-// Computer TOTAL & User's accruing TOTAL
-var computerNum = '';
-var userTotal = '';
+    // --------------------------------------------------------------------
 
-// Crystal values
-var crystal1 = '';
-var crystal2 = '';
-var crystal3 = '';
-var crystal4 = '';
+    // Reset Function
+    function reset () {
+        // Resets Computers random number for new round
+        computerNum = Math.floor(Math.random() * (120 - 19 + 1) + 19);
+        console.log('New comNum = ' + computerNum);
+        $('#goal').text(computerNum);
+        // Resets Crystal Values for new round
+        crystal1 = Math.floor(Math.random() * (12 - 1 + 1) +1);
+        crystal2 = Math.floor(Math.random() * (12 - 1 + 1) +1);
+        crystal3 = Math.floor(Math.random() * (12 - 1 + 1) +1);
+        crystal4 = Math.floor(Math.random() * (12 - 1 + 1) +1);
+        console.log('New crystal 1 = ' + crystal1);
+        console.log('New crystal 2 = ' + crystal2);
+        console.log('New crystal 3 = ' + crystal3);
+        console.log('New crystal 4 = ' + crystal4);
+        // Resets Player's total to 0
+        userTotal = 0;
+        $('#sum').text(userTotal);
+    }
 
-// Game counters
-var winCount = 0;
-var lossCount = 0;
+    // --------------------------------------------------------------------
 
+    // Win Function
+    function win () {
+        alert ('Winner! Winner! Chicken Dinner!!!');
+        winCount++;
+        $('#winCount').text(winCount);
+        reset ();
+    }
 
-// FUNCTIONS
-// ====================================================================
+    // Loss Function
+    function loss () {
+        alert ('Loser! No one can carry this many crystals!');
+        lossCount++;
+        $('#lossCount').text(lossCount);
+        reset ();
+    }
 
+    // --------------------------------------------------------------------
 
-// startGame () 
+    // Collection Functions for crystals (Repeated for each button)
 
-    // Reset userTotal back to 0
-
-    // Computer generates random number / Resets random number
-
-    // Generates new random values for all 4 CRYSTALS
-
-    // Make sure gameCounters don't reset to 0
-
-// --------------------------------------------------------------------
-
-
-// collection ()
-
-    // Listen for button clicks on CRYSTALS
-
-    // Adds value of clicked CRYSTAL to userTotal
-
-// --------------------------------------------------------------------
-
-
-// totalChecker () * Possibly within collection ()
-
-    // Checks if userTotal = computerNum
-
-// --------------------------------------------------------------------
-
-
-// roundComplete () * Possibly within totalChecker ()
-
-    // If userTotal > computerNum then...
-
-        // update lossCount
-
-        // run startGame ()
-
-    // If usterTotal = computerNum then...
-
-        // update winCount
-
-        // run startGame ()
-
-    // else if
-
-        // run collection ()
-
-
-
-// MAIN PROCESS 
-// ====================================================================
-
-
-// startGame ()
-
-    // collection ()
+    // Listens for button clicks
+    $('#btn-1').on ('click', function () {
+        // Adds value of crystalto user total
+        userTotal = userTotal + crystal1;
+        console.log ('User Total = ' + userTotal);
+        // Replaces text on sum paragraph of html
+        $('#sum').text(userTotal);
+            // Conditions for win or loose
+            if (userTotal == computerNum) {
+                win ();
+            }
+            else if (userTotal > computerNum) {
+                loss ();
+            }
+    });
+    $('#btn-2').on ('click', function () {
+        userTotal = userTotal + crystal2;
+        console.log ('User Total = ' + userTotal);
+        $('#sum').text(userTotal);
+            if (userTotal == computerNum) {
+                win ();
+            }
+            else if (userTotal > computerNum) {
+                loss ();
+            }
+    });
+    $('#btn-3').on ('click', function () {
+        userTotal = userTotal + crystal3;
+        console.log ('User Total = ' + userTotal);
+        $('#sum').text(userTotal);
+            if (userTotal == computerNum) {
+                win ();
+            }
+            else if (userTotal > computerNum) {
+                loss ();
+            }
+    });
+    $('#btn-4').on ('click', function () {
+        userTotal = userTotal + crystal4;
+        console.log ('User Total = ' + userTotal);
+        $('#sum').text(userTotal);
+            if (userTotal == computerNum) {
+                win ();
+            }
+            else if (userTotal > computerNum) {
+                loss ();
+            }
+    });
+}); 
